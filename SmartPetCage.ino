@@ -42,6 +42,7 @@ void button1_callback(const String & state){// add hay
     Blinker.delay(50*fA1);// action time is set by user's app silder
     digitalWrite(25, LOW);
     digitalWrite(26, LOW);
+    Blinker.push("Food1 Added!");    
   }
 }
 void button2_callback(const String & state) {// add food2
@@ -50,6 +51,7 @@ void button2_callback(const String & state) {// add food2
     digitalWrite(27, HIGH);
     Blinker.delay(50*fA2);
     digitalWrite(27, LOW);
+    Blinker.push("Food2 Added!");   
   }
 }
 
@@ -83,6 +85,9 @@ float getTankLevel(){
   float w1 = waters *0.73 / 700;
   float w = w1;
   int ii = 0;
+  if(w1<20){
+    Blinker.push("Water Level Low!");     
+  }
   for(ii;ii<20;ii++){
      waters = float(analogRead(32));
      w1 = waters *0.73 / 700;
@@ -96,6 +101,9 @@ float getSmallTank(){
   float w1 = waters *0.73 / 700;
   float w = w1;
   int ii = 0;
+  if(w1<20){
+    Blinker.push("Water Level Low!");     
+  }
   for(ii;ii<20;ii++){
      waters = float(analogRead(35));
      w1 = waters *0.73 / 700;
